@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      #uri: "mongodb://127.0.0.1:27017"
+      uri: mongodb+srv://app_user:TykyKgZNjtgUKaaD@cluster0-38yqr.mongodb.net/articles
+      database: "articles"
+  jackson:
+    default-property-inclusion: NON_NULL
