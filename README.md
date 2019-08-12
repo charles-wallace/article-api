@@ -7,11 +7,11 @@
  - http://ec2-54-83-188-153.compute-1.amazonaws.com:8080/article/5d48689e73e15d5c1a24d980 example call w/ id
  - See description of API Structure below for more info
  - Note: When running locally use localhost:8080/article or /articles and make sure the base url in Requests.js under /src/util is set to 'http://localhost:8080' to run the front end.
-- **Front End Deployment (w/ access to api deployment):**  http://article-archive-east.s3-website-us-east-1.amazonaws.com/
-- **Front End Implementation (Git):** https://github.com/cwrepo/article-front-end
+ - **Front End Deployment (w/ access to api deployment):**  http://article-archive-east.s3-website-us-east-1.amazonaws.com/
+ - **Front End Implementation (Git):** https://github.com/cwrepo/article-front-end
 
 ## Summary
- Spring Reactive Web, and Spring Reactive Mongo were used to develop a non-blocking REST API pulling from a MongoDB Atlas Database. A complementing UI was developed using ReactJS. The resulting deployment of the entire project can be accessed using the links above. The articles-api provides an interface to a Mongodb Atlas cluster containing a collection of over 8000 articles obtained from a kaggle kernal (https://www.kaggle.com/snapcrack/all-the-news). This data was sampled, cleaned, and adapted into a collection using python with pandas, numpy, and pymongo. The Project is packaged with maven and uses Java 11 and kotlin.
+ Spring Reactive Web, and Spring Reactive Mongo were used to develop a non-blocking REST API pulling from a MongoDB Atlas Database. A complementing UI was developed using ReactJS. The resulting deployment of the entire project can be accessed using the links above. The articles-api provides an interface to a Mongodb Atlas cluster containing a collection of over 8000 articles obtained from a kaggle kernal (https://www.kaggle.com/snapcrack/all-the-news). This data was sampled, cleaned, and adapted into a collection using python with pandas, numpy, and pymongo. The Project is packaged with maven and uses Java 11 and kotlin. Run "mvn package" to run with tests and then npm start in the front end application to run project locally.
  
 ## Overview
 
@@ -22,11 +22,11 @@
   - **Repositories  and Data Objects** (com.api.articles.data) defining the domain model with of data classes are in the data package. Repositories house the MongoTemplate used by services to request MongoDB atlas data.
   
 ### API Structure
-- Get article corresponding to specified id:** /article/{id}**
+- Get article corresponding to specified id:**/article/{id}**
 - Get paged articles from entire colleciton: **/articles?page={page_number}**
-- Get paged articles filtered by specified year:** /articles?year={year_var}&page={page_number}**
+- Get paged articles filtered by specified year:**/articles?year={year_var}&page={page_number}**
 - Get paged articles filtered by specified year and month: **/articles?year={year_var}&month={month_var}&page={page_number}**
-- Get articles associated with specified publisher id:** /articles/publisher/{id}?page={page_number}**
+- Get articles associated with specified publisher id:**/articles/publisher/{id}?page={page_number}**
 - Similar options for publishers: /... the same filter methods associated with the /artilces endpoint are available to /articles/publisher/{id}
 
 ### MongoDB Data
