@@ -1,7 +1,7 @@
 # **Articles API**
 
 
-## Links
+Links
     **Front End Implementation (Git):** https://github.com/cwrepo/article-api
     **Front End Deployment (w/ access to api deployment):**  http://article-archive-east.s3-website-us-east-1.amazonaws.com/
     **Articles API Deployment:**
