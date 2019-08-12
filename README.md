@@ -1,6 +1,7 @@
 # **Articles API**
 
-##Links
+## Links
+
 - **Articles API Deployment (Hosted on AWS EC2):**
  - http://ec2-54-83-188-153.compute-1.amazonaws.com:8080/articles
  - http://ec2-54-83-188-153.compute-1.amazonaws.com:8080/article/5d48689e73e15d5c1a24d980 example call w/ id
@@ -10,13 +11,9 @@
 - **Front End Implementation (Git):** https://github.com/cwrepo/article-front-end
 
 ## Summary
- Spring Reactive Web, and Spring Reactive Mongo were used to develop a non-blocking REST API pulling from a MongoDB Atlas Database. A complementing UI was developed using ReactJS. The resulting deployment of the entire project can be accessed using the links above.
+ Spring Reactive Web, and Spring Reactive Mongo were used to develop a non-blocking REST API pulling from a MongoDB Atlas Database. A complementing UI was developed using ReactJS. The resulting deployment of the entire project can be accessed using the links above. The articles-api provides an interface to a Mongodb Atlas cluster containing a collection of over 8000 articles obtained from a kaggle kernal (https://www.kaggle.com/snapcrack/all-the-news). This data was sampled, cleaned, and adapted into a collection using python with pandas, numpy, and pymongo. The Project is packaged with maven and uses Java 11 and kotlin.
  
-The articles-api provides an interface to a Mongodb Atlas cluster containing a collection of over 8000 articles obtained from a kaggle kernal (https://www.kaggle.com/snapcrack/all-the-news). This data was sampled, cleaned, and adapted into a collection using python with pandas, numpy, and pymongo.
-
- The Project is packaged with maven and uses Java 11 and kotlin.
- 
-##Overview
+## Overview
 
 ### Spring Implementation
   - **Routers** (com.api.articles.router) supply two primary end points, with additional filter options, and are made avaiable to client applications using functional routing in the "router" package. *ArticleContentRouter* takes a private instance of *ArticleContentHandler* in its constructor to handle GET Requests to article/{id} for a single article object with content, and *ArticleInfoRouter* takes a private instance of  *ArticleInfoHandler* to interpret requests for a list of article info documents.
@@ -33,8 +30,9 @@ The articles-api provides an interface to a Mongodb Atlas cluster containing a c
 - Similar options for publishers: /... the same filter methods associated with the /artilces endpoint are available to /articles/publisher/{id}
 
 ### MongoDB Data
-####Articles Collection
+
+#### Articles Collection
    The the primary collection in which all article content and information on the publisher, date, title, and authors is held and indexed with a 	unique id. This is the underlying collection providing the base collection for the ArticleInfo view, and content for the article/{id} endpoint. It is modeled with the ArticleContent data class.
 
-####ArticleInfo Collection
+#### ArticleInfo Collection
 The Article Info Collection is a view  obtained by aggregating a projection in sorted ascending order on the Articles collection. This view of the underlying Article Collection is what supplies information for the articles/ and articles/publisher/{id}, endpoints, along with their associated query parameters. It is modeled with the ArticleInfo data class and queried via the ArticleInfo Repository. 
