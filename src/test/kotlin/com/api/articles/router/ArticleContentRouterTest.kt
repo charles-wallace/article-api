@@ -52,7 +52,7 @@ class ArticleContentRouterTest {
     @Test
     fun `Test Get With Path Variable`() {
         val res = webTestClient.get()
-                .uri("/articles/1")
+                .uri("/article/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()
